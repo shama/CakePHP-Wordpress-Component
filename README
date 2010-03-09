@@ -1,0 +1,37 @@
+CakePHP Wordpress Component v0.2
+
+= ABOUT =========
+This CakePHP component integrates WordPress with CakePHP by utilizing the WordPress API.
+WordPress and CakePHP don't like each other because of one little reason: The double underscore function. The "__()" function is an imcompatible global function between the frameworks. One solution is to rename or alter the function but that would require hundreds of hacks directly to WordPress, plugins, themes and/or CakePHP. That would be a nightmare.
+This CakePHP component gets around the problem by accessing WordPress via a web service file. The solution uses 2 files: The CakePHP component and a PHP file that connects the component to the WordPress API. Input is sent to the web service file with POST variables and returned to the component JSON encoded. This way users can use this component even if they don't have SOAP or XML-RPC enabled on their server.
+Further more this component takes advantage of the CakePHP caching system and uses a simple authentication system to keep unauthorized users from accessing your copy of WordPress through the web service file.
+
+= INSTALL =======
+1. Install WordPress into a folder in your CakePHP app/webroot/ folder.
+2. wordpress.php goes into your CakePHP app/controllers/components/ folder.
+3. wordpress_service.php goes into your CakePHP app/webroot/ folder.
+4. Set the PASSWORD variable at the top of both files to any random string of characters. Just as long as they are the same.
+
+= USAGE =========
+* Add the component to your controller: var $components = array('Wordpress');
+* Customize the component either by:
+      o Directly edit the settings in the component file.
+      o OR Specify settings in your controller: var $components = array('Wordpress' => array('setting_name' => 'value'));
+* Use the component: $this->Wordpress->wp_api_func_name('arg1', 'arg2');
+* Visit the WordPress Codex for a list of available WordPress functions.
+
+= SETTINGS ======
+* PASSWORD
+  Set to a random string of characters. This field should match the $PASSWORD variable in the wordpress_service.php file. Used to ensure only the component can access your WordPress API functions.
+* PATH_TO_WP
+  The absolute path to your WordPress folder. If you leave it blank it will assume you have installed WordPress into a folder named 'wp' in your CakePHP app/webroot/ folder.
+* CACHE
+  Set to true or false if you would like CakePHP to cache results from WordPress.
+* WP_SERVICE_URL
+  The relative URL to your wordpress_service.php file. If you have put the web service file into your CakePHP app/webroot/ folder then leave it set to '/wordpress_service.php'.
+
+= MORE INFO =====
+Please visit http://www.kyletyoung.com/code/cakephp_wordpress_component for further information.
+
+= AUTHOR ========
+Kyle Robinson Young <kyle at kyletyoung.com>
