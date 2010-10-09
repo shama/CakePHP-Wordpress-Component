@@ -1,5 +1,8 @@
 CakePHP Wordpress Component v0.2
 
+= NOTICE ========
+This component is a hack. Although it basically works its not a very elegant solution. I have plans to rewrite a proper Wordpress/CakePHP Plugin that will replace this.
+
 = ABOUT =========
 This CakePHP component integrates WordPress with CakePHP by utilizing 
 the WordPress API.
