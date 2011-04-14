@@ -63,7 +63,7 @@ define('WP_USE_THEMES', false);
 require_once $_WPSERVICE['path'].'wp-config.php';
 
 ob_start();
-$return = call_user_func_array($_WPSERVICE['func'], json_decode($_WPSERVICE['args']));
+$return = call_user_func_array($_WPSERVICE['func'], json_decode(stripslashes($_WPSERVICE['args']), true));
 $ob = ob_get_clean();
 
 // DETERMINE WHICH TO RETURN
